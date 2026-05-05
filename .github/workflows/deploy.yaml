@@ -3,10 +3,10 @@ name: deploy to github pages
 on:
   push:
     branches:
-     -main
+     - main
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-tokens: write
 
@@ -15,16 +15,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-        - name: checkout repository
+        - name: checkout code
           uses: actions/checkout@v4
 
-        - name: connect pages
+        - name: setup pages
           uses: actions/configure-pages@v4
 
         - name: upload artifact
           uses: actions/upload-pages-artifacts@v4
           with :
             path: ./
+
         - name: deploy to Github Pages
           uses: actions/deploy-pages@v4
 
